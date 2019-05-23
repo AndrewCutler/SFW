@@ -2,12 +2,18 @@
   "manifest_version": 2,
   "name": "Safe For Work",
   "description": "Open up a safe-for-work browser window to hide what you're really doing!",
-  "version": "1.0",
+  "version": "1.1",
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_icon": "icon.png"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "tabs"
   ]
 }
