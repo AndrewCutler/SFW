@@ -1,8 +1,8 @@
 chrome.browserAction.onClicked.addListener(function (tab) {
-  chrome.tabs.executeScript(
-    null,
-    // { file: "openTabs.js" });
-    // { code: `windows.getAll(function(windows){ alert(typeof windows} )})` }
-    { code: `alert('clicked')` }
-  )
+  chrome.windows.create({
+    "url": ['http://www.google.com', 'http://www.mlb.com'],
+    "state": 'maximized',
+    "focused": true
+  })
+
 });
