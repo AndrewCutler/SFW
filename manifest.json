@@ -3,17 +3,21 @@
   "name": "Safe For Work",
   "description": "Open up a safe-for-work browser window to hide what you're really doing!",
   "version": "1.1",
+  "commands": {
+    "open-sfw": {
+      "suggested_key": {
+        "default": "Ctrl+M",
+        "mac": "Command+M"
+      },
+      "description": "Open SFW window"
+    }
+  },
   "background": {
-    "scripts": [
-      "background.js"
-    ],
+    "scripts": ["background.js"],
     "persistent": false
   },
   "browser_action": {
     "default_icon": "icon.png"
   },
-  "permissions": [
-    "activeTab",
-    "tabs"
-  ]
+  "permissions": ["activeTab", "tabs"]
 }
