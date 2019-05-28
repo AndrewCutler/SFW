@@ -1,5 +1,6 @@
 .removable {
   float: right;
+  color: red;
 }
 
 .removable:hover {
