@@ -4,19 +4,23 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SFW</title>
-  <!-- <style type="text/css">
-    #safe {
-      border-radius: 15%;
-      padding: 6px;
-      font-size: 10px;
-      background: rgb(23, 126, 151);
-      color: rgba(190, 187, 187, 0.986);
-    }
-  </style> -->
+
 </head>
 
 <body>
-  <!-- <button id="safe">The boss is looking!</button> -->
+  <h2>Safe For Work</h2>
+  <div>
+    <h5>Add a tab</h5>
+    <form>
+      <input type="text" id="url" placeholder="Add a URL here">
+      <button id="add" type="button">Add</button>
+    </form>
+  </div>
+  <div>
+    <h5>Current tabs</h5>
+    <button id="show" type="button">Show URLs</button>
+    <ul id="list"></ul>
+  </div>
   <script src="popup.js" async defer></script>
 </body>
 
