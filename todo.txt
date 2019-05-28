@@ -2,4 +2,3 @@
 2. Filter/sanitize URLs
 3. Sync
 4. Update URLs instead of appending each time
-5. Allow URLs be removed

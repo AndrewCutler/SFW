@@ -26,14 +26,25 @@ showBtn.onclick = function () {
         link.target = "_blank" //new tab
         var text = document.createTextNode(s)
         link.appendChild(text)
-        console.log(link)
+
+        //create remove button
+        var remove = document.createElement('span')
+        remove.setAttribute("id", s)
+        remove.className = "removable"
+        var removeText = document.createTextNode('×')
+        remove.appendChild(removeText)
+        remove.onclick = function () {
+          chrome.storage.local.remove(s)
+        }
 
         //create li
         var node = document.createElement('li')
         node.appendChild(link)
+        node.appendChild(remove)
         list.appendChild(node)
       })
     })
     listShown = true
   }
 }
+

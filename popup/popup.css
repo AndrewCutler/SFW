@@ -1,0 +1,7 @@
+.removable {
+  float: right;
+}
+
+.removable:hover {
+  cursor: pointer;
+}
