@@ -7,12 +7,21 @@
 //   console.log('popup')
 // })
 
-chrome.commands.onCommand.addListener(function(command) {
+chrome.commands.onCommand.addListener(function (command) {
   if (command === 'open-sfw') {
-    chrome.windows.create({
-      url: ['http://www.google.com', 'http://www.mlb.com'],
-      state: 'maximized',
-      focused: true
+    //get saved URLs
+    chrome.storage.local.get(null, function (result) {
+      //array of URLs with https://
+      var urls = []
+      Object.values(result).forEach(url => {
+        urls.push('https://' + url)
+      })
+      //open new window with URLs
+      chrome.windows.create({
+        "url": urls,
+        "state": 'maximized',
+        "focused": true
+      })
     })
   }
 })
