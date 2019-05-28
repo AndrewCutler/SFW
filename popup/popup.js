@@ -24,6 +24,7 @@ showBtn.onclick = function () {
         var link = document.createElement('A')
         link.href = 'https://' + result[s]
         link.target = "_blank" //new tab
+        link.title = "Open link"
         var text = document.createTextNode(s)
         link.appendChild(text)
 
@@ -31,6 +32,7 @@ showBtn.onclick = function () {
         var remove = document.createElement('span')
         remove.setAttribute("id", s)
         remove.className = "removable"
+        remove.title = "Remove URL from SFW"
         var removeText = document.createTextNode('×')
         remove.appendChild(removeText)
         remove.onclick = function () {

@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SFW</title>
-  <link rel="text/css" href="popup.css">
+  <link rel="stylesheet" type="text/css" href="popup.css">
   </link>
 
 </head>
 
 <body>
   <h2>Safe For Work</h2>
-  <div>
+  <div id="addSection" class="section">
     <h5>Add a tab</h5>
     <form>
       <input type="text" id="site" placeholder="Site name">
@@ -19,7 +19,7 @@
       <button id="add" type="button">Add</button>
     </form>
   </div>
-  <div>
+  <div id="showSection" class="section">
     <h5>Current tabs</h5>
     <button id="show" type="button">Show URLs</button>
     <ul id="list"></ul>
