@@ -1,0 +1,4 @@
+1. Style popup
+2. Filter/sanitize URLs
+3. Sync
+4. 
