@@ -6,6 +6,16 @@ var listShown = false
 var addBtn = document.getElementById("add")
 addBtn.onclick = function () {
   var list = document.getElementById('list')
+  //first get previous urls
+  // chrome.storage.local.get(null, function (result) {
+  //   var urls = Object.keys(result)
+  //   urls.forEach(s => {
+  //     addSiteToList(s, result[s])
+  //   })
+  //   listShown = true
+  // })
+  showURLs()
+  //then add new one
   chrome.storage.local.set({ [site.value]: url.value }, function () {
     addSiteToList(site.value, url.value)
   })
@@ -17,14 +27,7 @@ showBtn.onclick = function () {
   var list = document.getElementById('list')
   //show list of URLs
   if (!listShown) {
-
-    chrome.storage.local.get(null, function (result) {
-      var urls = Object.keys(result)
-      urls.forEach(s => {
-        addSiteToList(s, result[s])
-      })
-    })
-    listShown = true
+    showURLs()
   }
   //otherwise, collapse list
   else {
@@ -63,4 +66,17 @@ function addSiteToList(site, url) {
   node.appendChild(link)
   node.appendChild(remove)
   list.appendChild(node)
+}
+
+function showURLs() {
+  //empty ul first
+  while (list.hasChildNodes()) list.removeChild(list.lastChild)
+  //populate ul
+  chrome.storage.local.get(null, function (result) {
+    var urls = Object.keys(result)
+    urls.forEach(s => {
+      addSiteToList(s, result[s])
+    })
+    listShown = true
+  })
 }
