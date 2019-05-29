@@ -1,6 +1,8 @@
 //get data from input
 var url = document.getElementById("url")
 var site = document.getElementById("site")
+//get list ul from DOM
+var list = document.getElementById('list')
 //toggle for list
 var listShown = false
 //regex for https:// and http://
@@ -9,11 +11,10 @@ var urlRE = /^https?:\/\//i
 //add URL
 var addBtn = document.getElementById("add")
 addBtn.onclick = function () {
-  var list = document.getElementById('list')
   //first get previous urls
   showURLs()
   //then add new one
-  chrome.storage.local.set({ [site.value]: url.value }, function () {
+  chrome.storage.local.set({ [site.value]: validateURL(url.value) }, function () {
     addSiteToList(site.value, url.value)
   })
 }
@@ -21,7 +22,6 @@ addBtn.onclick = function () {
 //retrieve URLs
 var showBtn = document.getElementById('show')
 showBtn.onclick = function () {
-  var list = document.getElementById('list')
   //show list of URLs
   if (!listShown) {
     showURLs()
@@ -71,6 +71,7 @@ function showURLs() {
   //populate ul
   chrome.storage.local.get(null, function (result) {
     var urls = Object.keys(result)
+    console.log(result)
     urls.forEach(s => {
       addSiteToList(s, result[s])
     })
