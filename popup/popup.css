@@ -1,23 +1,30 @@
 body {
   min-width: 300px;
   min-height: 400px;
+  background: #28536C;
 }
 
 /* by tag types */
 
 a {
   text-decoration: none;
-  color: #333333;
+  color: #6F8FA2;
 }
 
 button {
-  background: #33a4c76c;
+  background: #113951;
   border: 1px groove rgb(13, 38, 105);
   border-radius: 8%;
+  color: #6F8FA2
 }
 
 input {
   margin: 4px 2px;
+}
+
+input:focus {
+  border: 1px solid #6F8FA2;
+  box-shadow: 0 0 2px #6F8FA2;
 }
 
 h2 {
@@ -31,7 +38,6 @@ h5 {
 li {
   font-size: 13px;
   font-weight: 500;
-  color: rgb(27, 64, 167);
 }
 
 li:hover {

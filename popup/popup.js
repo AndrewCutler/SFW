@@ -14,10 +14,10 @@ addBtn.onclick = function () {
 //retrieve URLs
 var showBtn = document.getElementById('show')
 showBtn.onclick = function () {
+  var list = document.getElementById('list')
   if (!listShown) {
 
     chrome.storage.local.get(null, function (result) {
-      var list = document.getElementById('list')
       var urls = Object.keys(result)
       urls.forEach(s => {
         //create link
@@ -47,6 +47,10 @@ showBtn.onclick = function () {
       })
     })
     listShown = true
+  }
+  else {
+    while (list.hasChildNodes()) list.removeChild(list.lastChild)
+    listShown = false
   }
 }
 
