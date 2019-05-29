@@ -4,3 +4,4 @@
 4. Maintain order of saved items (alphabetical right now)
 5. add how-to/info
 6. Catch errors for invalid URLs
+7. Change tab orders?
