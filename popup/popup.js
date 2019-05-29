@@ -1,19 +1,16 @@
+//get data from input
 var url = document.getElementById("url")
 var site = document.getElementById("site")
+//toggle for list
 var listShown = false
+//regex for https:// and http://
+var urlRE = /^https?:\/\//i
 
 //add URL
 var addBtn = document.getElementById("add")
 addBtn.onclick = function () {
   var list = document.getElementById('list')
   //first get previous urls
-  // chrome.storage.local.get(null, function (result) {
-  //   var urls = Object.keys(result)
-  //   urls.forEach(s => {
-  //     addSiteToList(s, result[s])
-  //   })
-  //   listShown = true
-  // })
   showURLs()
   //then add new one
   chrome.storage.local.set({ [site.value]: url.value }, function () {
@@ -40,7 +37,7 @@ showBtn.onclick = function () {
 function addSiteToList(site, url) {
   //create link
   var link = document.createElement('A')
-  link.href = 'https://' + url
+  link.href = 'https://' + validateURL(url)
   link.target = "_blank" //new tab
   link.title = "Open link"
   var text = document.createTextNode(site)
@@ -79,4 +76,10 @@ function showURLs() {
     })
     listShown = true
   })
+}
+
+//handle URLs
+function validateURL(url) {
+  //strip https:// or http:// from front of entered URL
+  return url.replace(urlRE, '')
 }
