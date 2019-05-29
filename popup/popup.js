@@ -5,52 +5,62 @@ var listShown = false
 //add URL
 var addBtn = document.getElementById("add")
 addBtn.onclick = function () {
+  var list = document.getElementById('list')
   chrome.storage.local.set({ [site.value]: url.value }, function () {
-    console.log('URL ' + url.value + ' saved.')
+    addSiteToList(site.value, url.value)
   })
-  return false
 }
 
 //retrieve URLs
 var showBtn = document.getElementById('show')
 showBtn.onclick = function () {
   var list = document.getElementById('list')
+  //show list of URLs
   if (!listShown) {
 
     chrome.storage.local.get(null, function (result) {
       var urls = Object.keys(result)
       urls.forEach(s => {
-        //create link
-        var link = document.createElement('A')
-        link.href = 'https://' + result[s]
-        link.target = "_blank" //new tab
-        link.title = "Open link"
-        var text = document.createTextNode(s)
-        link.appendChild(text)
-
-        //create remove button
-        var remove = document.createElement('span')
-        remove.setAttribute("id", s)
-        remove.className = "removable"
-        remove.title = "Remove URL from SFW"
-        var removeText = document.createTextNode('×')
-        remove.appendChild(removeText)
-        remove.onclick = function () {
-          chrome.storage.local.remove(s)
-        }
-
-        //create li
-        var node = document.createElement('li')
-        node.appendChild(link)
-        node.appendChild(remove)
-        list.appendChild(node)
+        addSiteToList(s, result[s])
       })
     })
     listShown = true
   }
+  //otherwise, collapse list
   else {
     while (list.hasChildNodes()) list.removeChild(list.lastChild)
     listShown = false
   }
 }
 
+//add site li to list ul
+function addSiteToList(site, url) {
+  //create link
+  var link = document.createElement('A')
+  link.href = 'https://' + url
+  link.target = "_blank" //new tab
+  link.title = "Open link"
+  var text = document.createTextNode(site)
+  link.appendChild(text)
+
+  //create remove button for li element
+  var remove = document.createElement('span')
+  remove.setAttribute("id", site)
+  remove.className = "removable"
+  remove.title = "Remove URL from SFW"
+  var removeText = document.createTextNode('×')
+  remove.appendChild(removeText)
+  //remove function onclick event
+  remove.onclick = function () {
+    chrome.storage.local.remove(site)
+    //remove li from list in DOM
+    list.removeChild(document.getElementById("li-" + site))
+  }
+
+  //create li and add to list ul
+  var node = document.createElement('li')
+  node.setAttribute("id", "li-" + site)
+  node.appendChild(link)
+  node.appendChild(remove)
+  list.appendChild(node)
+}
