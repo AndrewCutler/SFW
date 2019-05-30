@@ -1,6 +1,2 @@
-1. Style popup
-2. Filter/sanitize URLs
-3. Sync
-4. Maintain order of saved items (alphabetical right now)
-6. Catch errors for invalid URLs
-7. Change tab orders?
+1. Sync
+2. Maintain order of saved items (alphabetical right now)

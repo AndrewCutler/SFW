@@ -14,7 +14,7 @@ addBtn.onclick = function () {
   //first get previous urls
   showURLs()
   //then add new one
-  chrome.storage.local.set({ [site.value]: validateURL(url.value) }, function () {
+  chrome.storage.sync.set({ [site.value]: validateURL(url.value) }, function () {
     addSiteToList(site.value, url.value)
   })
 }
@@ -52,7 +52,7 @@ function addSiteToList(site, url) {
   remove.appendChild(removeText)
   //remove function onclick event
   remove.onclick = function () {
-    chrome.storage.local.remove(site)
+    chrome.storage.sync.remove(site)
     //remove li from list in DOM
     list.removeChild(document.getElementById("li-" + site))
   }
@@ -69,7 +69,7 @@ function showURLs() {
   //empty ul first
   while (list.hasChildNodes()) list.removeChild(list.lastChild)
   //populate ul
-  chrome.storage.local.get(null, function (result) {
+  chrome.storage.sync.get(null, function (result) {
     var urls = Object.keys(result)
     console.log(result)
     urls.forEach(s => {

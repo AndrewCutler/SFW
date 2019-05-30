@@ -1,7 +1,7 @@
 chrome.commands.onCommand.addListener(function (command) {
   if (command === 'open-sfw') {
     //get saved URLs
-    chrome.storage.local.get(null, function (result) {
+    chrome.storage.sync.get(null, function (result) {
       //array of URLs with https://
       var urls = []
       Object.values(result).forEach(url => {

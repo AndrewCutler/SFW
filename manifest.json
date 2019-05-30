@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Safe For Work",
   "description": "Open up a safe-for-work browser window to hide what you're really doing!",
-  "version": "1.2",
+  "version": "1.4",
   "commands": {
     "open-sfw": {
       "suggested_key": {
